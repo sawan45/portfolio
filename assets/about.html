@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #1d4ed8;
+      --background: #0f172a;
+      --surface: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --accent: #60a5fa;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .about {
+      min-height: 100vh;
+      padding: 4rem 2rem;
+    }
+
+    .about-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Profile Section */
+    .profile-section {
+      text-align: center;
+      margin-bottom: 4rem;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
+
+    .profile-img img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent);
+    }
+
+    .profile-img::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .profile-info h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .profile-info h2 {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .social-links a {
+      color: var(--text-secondary);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    /* About Content */
+    .about-text {
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      text-align: center;
+      animation: fadeIn 0.5s ease 0.2s backwards;
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    /* Experience Cards */
+    .experience-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+      animation: fadeIn 0.5s ease 0.4s backwards;
+    }
+
+    .exp-card {
+      background: var(--surface);
+      padding: 2rem;
+      border-radius: 1rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .exp-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .exp-card .number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--accent);
+      display: block;
+    }
+
+    .exp-card .label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Skills Section */
+    .skills-section {
+      margin-bottom: 4rem;
+      animation: fadeIn 0.5s ease 0.6s backwards;
+    }
+
+    .skills-section h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--accent);
+      text-align: center;
+    }
+
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-category {
+      background: var(--surface);
+      padding: 2rem;
+      border-radius: 1rem;
+    }
+
+    .skill-category h3 {
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .skill-tags span {
+      background: rgba(96, 165, 250, 0.1);
+      color: var(--accent);
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .skill-tags span:hover {
+      background: var(--accent);
+      color: var(--background);
+    }
+
+    /* Education Section */
+    .education-section {
+      animation: fadeIn 0.5s ease 0.8s backwards;
+    }
+
+    .education-section h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--accent);
+      text-align: center;
+    }
+
+    .education-card {
+      background: var(--surface);
+      padding: 2rem;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .edu-icon {
+      font-size: 2.5rem;
+      color: var(--accent);
+    }
+
+    .edu-details h3 {
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .edu-details p {
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .edu-details span {
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+      50% {
+        transform: scale(1.05);
+        opacity: 0.2;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .about {
+        padding: 2rem 1rem;
+      }
+
+      .profile-info h1 {
+        font-size: 2rem;
+      }
+
+      .profile-info h2 {
+        font-size: 1.2rem;
+      }
+
+      .education-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+      }
+
+      .skills-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .profile-img {
+        width: 150px;
+        height: 150px;
+      }
+
+      .experience-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <body>
+    <section class="about" id="about">
+      <div class="about-container">
+        <!-- Profile Section -->
+        <div class="profile-section">
+          <div class="profile-img">
+            <img
+              src="images/WhatsApp Image 2025-03-26 at 19.47.54_61f78cd1.jpg"
+              alt="Profile Picture"
+            />
+          </div>
+          <div class="profile-info">
+            <h1>Dangerous Boy ⚡⚡🔥</h1>
+            <h2>Full Stack Developer</h2>
+            <div class="social-links">
+              <a href="https://github.com/sawan45"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a href="https://www.linkedin.com/in/sawan-kumar-525b02301/"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="https://x.com/sawanverma45?t=SOQanShtmo4ZhNgCGErUhw&s=08"
+                ><i class="fab fa-twitter"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- About Content -->
+        <div class="about-content">
+          <div class="about-text">
+            <h2>About Me</h2>
+            <p>
+              Hello! I'm a passionate Full Stack Developer with expertise in
+              building web applications. I enjoy creating elegant solutions to
+              complex problems and learning new technologies.
+            </p>
+            <p>
+              With 3+ years of experience in web development, I've worked on
+              various projects ranging from e-commerce platforms to enterprise
+              applications.
+            </p>
+          </div>
+
+          <!-- Experience Cards -->
+          <div class="experience-cards">
+            <div class="exp-card">
+              <span class="number">3+</span>
+              <span class="label">Years Experience</span>
+            </div>
+            <div class="exp-card">
+              <span class="number">50+</span>
+              <span class="label">Projects Completed</span>
+            </div>
+            <div class="exp-card">
+              <span class="number">20+</span>
+              <span class="label">Happy Clients</span>
+            </div>
+          </div>
+
+          <!-- Skills Section -->
+          <div class="skills-section">
+            <h2>My Skills</h2>
+            <div class="skills-container">
+              <div class="skill-category">
+                <h3>Frontend</h3>
+                <div class="skill-tags">
+                  <span>HTML5</span>
+                  <span>CSS3</span>
+                  <span>JavaScript</span>
+                  <span>React</span>
+                  <span>Vue.js</span>
+                </div>
+              </div>
+              <div class="skill-category">
+                <h3>Backend</h3>
+                <div class="skill-tags">
+                  <span>Node.js</span>
+                  <span>Python</span>
+                  <span>MongoDB</span>
+                  <span>SQL</span>
+                </div>
+              </div>
+              <div class="skill-category">
+                <h3>Tools</h3>
+                <div class="skill-tags">
+                  <span>Git</span>
+                  <span>Docker</span>
+                  <span>AWS</span>
+                  <span>Figma</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education Section -->
+          <div class="education-section">
+            <h2>Education</h2>
+            <div class="education-card">
+              <div class="edu-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <div class="edu-details">
+                <h3>Bachelor of Science</h3>
+                <p>Munger University</p>
+                <span>2024 - 2028</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

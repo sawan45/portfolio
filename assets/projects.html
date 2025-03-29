@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Projects</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #1d4ed8;
+      --background: #0f172a;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --accent: #60a5fa;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .heading {
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 3rem 0;
+      color: var(--text-primary);
+    }
+
+    .heading span {
+      color: var(--accent);
+    }
+
+    .projects {
+      padding: 2rem 5%;
+      min-height: 100vh;
+    }
+
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .project-img {
+      position: relative;
+      overflow: hidden;
+      height: 200px;
+    }
+
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover .project-img img {
+      transform: scale(1.1);
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .project-content p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-stack span {
+      background: rgba(96, 165, 250, 0.1);
+      color: var(--accent);
+      padding: 0.3rem 0.8rem;
+      border-radius: 1rem;
+      font-size: 0.8rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--primary-color);
+      color: var(--text-primary);
+      text-decoration: none;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    .btn i {
+      font-size: 0.9rem;
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .project-card {
+      animation: fadeInUp 0.5s ease forwards;
+      opacity: 0;
+    }
+
+    .project-card:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    .project-card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .project-card:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    .project-card:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .heading {
+        font-size: 2rem;
+      }
+
+      .projects {
+        padding: 2rem;
+      }
+
+      .project-card {
+        max-width: 100%;
+      }
+
+      .project-links {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* Hover Effects */
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(96, 165, 250, 0.1),
+        transparent
+      );
+      transform: translateX(-100%);
+      transition: 0.6s;
+      z-index: 1;
+    }
+
+    .project-card:hover::before {
+      transform: translateX(100%);
+    }
+
+    /* Loading Animation */
+    .projects-container {
+      position: relative;
+    }
+
+    .projects-container::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        var(--accent),
+        transparent
+      );
+      animation: loading 2s infinite;
+    }
+
+    @keyframes loading {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+  </style>
+  <body>
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+      <h2 class="heading">My <span>Projects</span></h2>
+
+      <div class="projects-container">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="project-img">
+            <img
+              src="images/best-ecommerce-website-builders_13313617-76dc-4253-8ef9-b58cc2b34ea7.webp"
+              alt="Project 1"
+            />
+          </div>
+          <div class="project-content">
+            <h3>E-Commerce Website</h3>
+            <p>
+              A full-featured online shopping platform with user authentication,
+              product management, and payment integration.
+            </p>
+            <div class="tech-stack">
+              <span>React</span>
+              <span>Node.js</span>
+              <span>MongoDB</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn"
+                >Live Demo <i class="fas fa-external-link-alt"></i
+              ></a>
+              <a href="#" class="btn">Code <i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-img">
+            <img src="images/task.jpg" alt="Project 2" />
+          </div>
+          <div class="project-content">
+            <h3>Task Management App</h3>
+            <p>
+              A collaborative task management application with real-time updates
+              and team collaboration features.
+            </p>
+            <div class="tech-stack">
+              <span>Vue.js</span>
+              <span>Firebase</span>
+              <span>Tailwind CSS</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn"
+                >Live Demo <i class="fas fa-external-link-alt"></i
+              ></a>
+              <a href="#" class="btn">Code <i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <div class="project-img">
+            <img src="images/images (1).jpg" alt="Project 3" />
+          </div>
+          <div class="project-content">
+            <h3>Weather Dashboard</h3>
+            <p>
+              A weather application that provides real-time weather updates and
+              forecasts for multiple locations.
+            </p>
+            <div class="tech-stack">
+              <span>JavaScript</span>
+              <span>Weather API</span>
+              <span>CSS3</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn"
+                >Live Demo <i class="fas fa-external-link-alt"></i
+              ></a>
+              <a href="#" class="btn">Code <i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card">
+          <div class="project-img">
+            <img src="images/fitness image.webp" alt="Project 4" />
+          </div>
+          <div class="project-content">
+            <h3>Fitness Tracker</h3>
+            <p>
+              A comprehensive fitness tracking application with workout plans,
+              progress monitoring, and nutrition tracking.
+            </p>
+            <div class="tech-stack">
+              <span>React Native</span>
+              <span>Express.js</span>
+              <span>MySQL</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn"
+                >Live Demo <i class="fas fa-external-link-alt"></i
+              ></a>
+              <a href="#" class="btn">Code <i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

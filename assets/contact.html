@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #1d4ed8;
+      --background: #0f172a;
+      --surface: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --accent: #60a5fa;
+      --error: #ef4444;
+      --success: #22c55e;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .contact {
+      min-height: 100vh;
+      padding: 3rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      background: var(--surface);
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Contact Info Styles */
+    .contact-info {
+      padding-right: 2rem;
+    }
+
+    .contact-info h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .contact-desc {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .info-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(96, 165, 250, 0.1);
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .info-item:hover {
+      transform: translateX(10px);
+    }
+
+    .info-item i {
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+
+    .info-details h3 {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+    }
+
+    .info-details p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(96, 165, 250, 0.1);
+      border-radius: 50%;
+      color: var(--accent);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: var(--accent);
+      color: var(--background);
+      transform: translateY(-3px);
+    }
+
+    /* Contact Form Styles */
+    .contact-form h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--accent);
+    }
+
+    .input-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .input-box {
+      position: relative;
+    }
+
+    .input-box input,
+    .input-box textarea {
+      width: 100%;
+      padding: 1rem;
+      padding-left: 3rem;
+      background: rgba(96, 165, 250, 0.1);
+      border: 2px solid transparent;
+      border-radius: 10px;
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .input-box textarea {
+      height: 150px;
+      resize: none;
+    }
+
+    .input-box label {
+      position: absolute;
+      left: 3rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-secondary);
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .input-box.textarea label {
+      top: 1rem;
+      transform: none;
+    }
+
+    .input-box i {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent);
+    }
+
+    .input-box.textarea i {
+      top: 1.2rem;
+      transform: none;
+    }
+
+    .input-box input:focus,
+    .input-box textarea:focus {
+      border-color: var(--accent);
+      background: rgba(96, 165, 250, 0.15);
+    }
+
+    .input-box input:focus ~ label,
+    .input-box input:valid ~ label,
+    .input-box textarea:focus ~ label,
+    .input-box textarea:valid ~ label {
+      top: -0.5rem;
+      left: 1rem;
+      font-size: 0.8rem;
+      padding: 0 0.5rem;
+      background: var(--surface);
+      color: var(--accent);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background: var(--accent);
+      color: var(--background);
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background: var(--primary-color);
+      transform: translateY(-2px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 968px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+      }
+
+      .contact-info {
+        padding-right: 0;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(96, 165, 250, 0.1);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact {
+        padding: 1rem;
+      }
+
+      .contact-container {
+        padding: 1.5rem;
+      }
+
+      .contact-info h2,
+      .contact-form h2 {
+        font-size: 1.8rem;
+      }
+
+      .info-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+      }
+
+      .social-links {
+        justify-content: center;
+      }
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .contact-info,
+    .contact-form {
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .contact-form {
+      animation-delay: 0.2s;
+    }
+
+    /* Success Message */
+    .success-message {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--success);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      display: none;
+      animation: slideIn 0.3s ease forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  </style>
+  <body>
+    <section class="contact" id="contact">
+      <div class="contact-container">
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h2>Get in Touch</h2>
+          <p class="contact-desc">
+            Feel free to reach out to me for any questions or opportunities!
+          </p>
+
+          <div class="info-items">
+            <div class="info-item">
+              <i class="fas fa-envelope"></i>
+              <div class="info-details">
+                <h3>Email</h3>
+                <p>sawanverma0003@gmail.com</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <i class="fas fa-phone"></i>
+              <div class="info-details">
+                <h3>Phone</h3>
+                <p>+91 9546873535</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <i class="fas fa-location-dot"></i>
+              <div class="info-details">
+                <h3>Location</h3>
+                <p>Lakhisarai, Bihar, Patna</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="https://github.com/sawan45" class="social-link">
+              <i class="fab fa-github"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/sawan-kumar-525b02301/"
+              class="social-link"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a
+              href="https://x.com/sawanverma45?t=SOQanShtmo4ZhNgCGErUhw&s=08"
+              class="social-link"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/sawankumar_45?igsh=bno2dDVrbzcxZHdv"
+              class="social-link"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <h2>Send Message</h2>
+          <form action="#" method="POST" id="contactForm">
+            <div class="input-group">
+              <div class="input-box">
+                <input type="text" required />
+                <label>Full Name</label>
+                <i class="fas fa-user"></i>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <div class="input-box">
+                <input type="email" required />
+                <label>Email</label>
+                <i class="fas fa-envelope"></i>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <div class="input-box">
+                <input type="text" required />
+                <label>Subject</label>
+                <i class="fas fa-file-alt"></i>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <div class="input-box textarea">
+                <textarea required></textarea>
+                <label>Message</label>
+                <i class="fas fa-comment-alt"></i>
+              </div>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              Send Message
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Here you would typically add your form submission logic
+          // For example, sending the data to a server
+
+          // Show success message
+          const successMessage = document.createElement("div");
+          successMessage.className = "success-message";
+          successMessage.innerHTML =
+            'Message sent successfully! <i class="fas fa-check"></i>';
+          document.body.appendChild(successMessage);
+
+          // Clear form
+          this.reset();
+
+          // Remove success message after 3 seconds
+          setTimeout(() => {
+            successMessage.remove();
+          }, 3000);
+        });
+    </script>
+  </body>
+</html>
